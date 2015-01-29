@@ -24,17 +24,11 @@ using namespace std;
 uMODULE(Count24Main)
 {
 	//Inputs
-	u_input<u_byte> Input;
-	u_input<bool> HourSet;
-	u_input<bool> MinSet;
-	u_input<bool> ResetSec;
 	u_input<bool> ClckInHour;
 	u_input<bool> ClckInT;
 	
 	//Outputs
 	u_output<u_byte> HourOut;
-	u_output<u_byte> MinOut;
-	u_output<u_byte> SecOut;
 	u_output<bool> ClckOut;
 	
 	//Submodules

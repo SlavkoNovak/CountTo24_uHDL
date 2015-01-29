@@ -38,7 +38,7 @@ uMODULE(Count24MainTB)
 
 		#ifdef ARDUINO_TB
 			cout << "loop; uHDL::TICKS: " << uHDL::TICKS << ", modCount24Main.ClckOut: " << (bool)modCount24Main.ClckOut.Read() << endl;
-			cout << "loop; uHDL::TICKS: " << uHDL::TICKS << ", modCount24Main.Input: " << (int)modCount24Main.Input.Read() << ", modCount24Main.HourOut: " << (int)modCount24Main.HourOut.Read() << endl;
+			cout << "loop; uHDL::TICKS: " << uHDL::TICKS << ", modCount24Main.HourOut: " << (int)modCount24Main.HourOut.Read() << endl;
 		#endif
 		
 		uDO_ON_ms(70200) ExitStimulation();
