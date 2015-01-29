@@ -1,6 +1,6 @@
 /*
 	Counter24.h
-	ABinClock v0.5 by Slavko Novak [slavko.novak.esen@gmail.com], January 2015
+	CountTo24_uHDL v0.5 by Slavko Novak [slavko.novak.esen@gmail.com], January 2015
 	License: LGPL
 */
 
