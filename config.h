@@ -14,7 +14,7 @@
 #include "uHDL_Primitives.h"
 
 //Declare module list
-#define NUM_OF_MODULES 7
+#define NUM_OF_MODULES 6
 extern uMODULES(modules, NUM_OF_MODULES)
 
 #include "Counter24.h"
