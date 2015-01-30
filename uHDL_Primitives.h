@@ -202,7 +202,7 @@ namespace uHDL
 				}
 				else
 				{
-					Output.Write(!Output.Read());						
+					Output.Write(!Output.Read());		
 				}
 				)
 	};

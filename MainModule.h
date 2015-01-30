@@ -35,8 +35,12 @@ uMODULE(Count24Main)
 	ClockMillis clock;
 	Counter24 countHour;
 	TFlipFlopPosEdg clckIn;
+	Multiplexer multiplexer;
 	
 	//Signals
+	u_signal<bool> multiplexer_Internal;
+	u_signal<bool> multiplexer_External;
+	u_signal<bool> multiplexer_ExternalSel;
 	u_signal<bool> countHour_clckIn;
 	
 	//Init method
@@ -44,8 +48,17 @@ uMODULE(Count24Main)
 	{
 		clckIn.Clck.Write(false);
 		clock.Delay_ms.Write(1000);
-		clock.ClckOut.Connect(&countHour_clckIn);
-		//countHour.ClckIn.Connect(&countHour_clckIn);
+		
+		clock.ClckOut.Connect(&multiplexer_Internal);
+		multiplexer.InternalClk.Connect(&multiplexer_Internal);
+		
+		multiplexer.ExternalClk.Connect(&multiplexer_External);
+		
+		clckIn.Output.Connect(&multiplexer_ExternalSel);
+		multiplexer.ExternalSel.Connect(&multiplexer_ExternalSel);
+		
+		multiplexer.Output.Connect(&countHour_clckIn);
+		countHour.ClckIn.Connect(&countHour_clckIn);
 		
 		modules.Add(this);
 		modules.Add(&clckIn); //Primitive module must be added
@@ -55,15 +68,8 @@ uMODULE(Count24Main)
 	//Module method
 	void Count24MainMethod()
 	{
+		multiplexer_External.Write(ClckInHour.Read());
 		clckIn.Clck.Write(ClckInT.Read());
-		if(clckIn.Output.Read())
-		{
-			countHour.ClckIn.Write(clock.ClckOut.Read());
-		}
-		else
-		{
-			if(ClckInHour.Change()) countHour.ClckIn.Write(ClckInHour.Read());
-		}
 		
 		HourOut.Write(countHour.Output.Read());
 		ClckOut.Write(countHour.ClckOut.Read());

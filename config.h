@@ -14,10 +14,11 @@
 #include "uHDL_Primitives.h"
 
 //Declare module list
-#define NUM_OF_MODULES 5
+#define NUM_OF_MODULES 7
 extern uMODULES(modules, NUM_OF_MODULES)
 
 #include "Counter24.h"
+#include "Multiplexer.h"
 #include "MainModule.h"
 
 #ifdef ARDUINO_TB

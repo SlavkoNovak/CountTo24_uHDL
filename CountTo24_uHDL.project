@@ -101,6 +101,7 @@
     <File Name="uHDL.h"/>
     <File Name="uHDL_Primitives.h"/>
     <File Name="license.txt"/>
+    <File Name="Multiplexer.h"/>
     <File Name="CountTo24_uHDL.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>
