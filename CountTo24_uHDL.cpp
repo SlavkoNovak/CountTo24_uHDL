@@ -34,7 +34,6 @@ void setup()
 	
 	//Connect signals to module
 	modCount24Main.ClckInHour.Connect(&countHour_clckIn);
-	modCount24Main.ClckInT.Write(false);
 }
 
 void loop()
