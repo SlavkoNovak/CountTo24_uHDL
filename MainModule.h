@@ -48,7 +48,7 @@ uMODULE(Count24Main)
 	{
 		clckIn.Clck.Write(false);
 		clock.Delay_ms.Write(1000);
-		
+
 		clock.ClckOut.Connect(&multiplexer_Internal);
 		multiplexer.InternalClk.Connect(&multiplexer_Internal);
 		
@@ -68,9 +68,11 @@ uMODULE(Count24Main)
 	//Module method
 	void Count24MainMethod()
 	{
+		//Wire input
 		multiplexer_External.Write(ClckInHour.Read());
 		clckIn.Clck.Write(ClckInT.Read());
 		
+		//Wire output
 		HourOut.Write(countHour.Output.Read());
 		ClckOut.Write(countHour.ClckOut.Read());
 	}
