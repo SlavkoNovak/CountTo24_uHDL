@@ -22,7 +22,7 @@ using namespace std;
 
 //Main module -->
 uMODULE(Count24Main)
-{
+{	
 	//Inputs
 	u_input<bool> ClckInHour;
 	u_input<bool> ClckInT;
@@ -31,24 +31,24 @@ uMODULE(Count24Main)
 	u_output<u_byte> HourOut;
 	u_output<bool> ClckOut;
 	
-	//Submodules
-	ClockMillis clock;
-	Counter24 countHour;
-	TFlipFlopPosEdg clckIn;
-	Multiplexer multiplexer;
-	
 	//Signals
 	u_signal<bool> multiplexer_Internal;
 	u_signal<bool> multiplexer_External;
 	u_signal<bool> multiplexer_ExternalSel;
 	u_signal<bool> countHour_clckIn;
 	
+	//Submodules
+	ClockMillis clock;
+	Counter24 countHour;
+	TFlipFlopPosEdg clckIn;
+	Multiplexer multiplexer;
+
 	//Init method
 	uINIT(Count24Main)
 	{
 		clckIn.Clck.Write(false);
 		clock.Delay_ms.Write(1000);
-
+		
 		clock.ClckOut.Connect(&multiplexer_Internal);
 		multiplexer.InternalClk.Connect(&multiplexer_Internal);
 		

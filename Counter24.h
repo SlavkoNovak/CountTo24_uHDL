@@ -51,16 +51,13 @@ uMODULE(Counter24)
 		
 		if(ClckIn.Change())
 		{
+			Output.Write(Output.Read() + 1);
 			if(24 == Output.Read())
 			{
 				Output.Write(0);
 				ClckOut.Write(true);
 			}
-			else
-			{
-				Output.Write(Output.Read() + 1);
-				ClckOut.Write(false);
-			}
+			else ClckOut.Write(false);
 		}
 	}
 	

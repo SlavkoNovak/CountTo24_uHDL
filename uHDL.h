@@ -104,7 +104,7 @@ namespace uHDL
 	public:
 		u_port() : data(T()), data_state(0), data_change(false)
 		{}
-		
+			
 		T& Read()
 		{
 			return this->data;
@@ -152,7 +152,7 @@ namespace uHDL
 	public:
 		u_signal(): inputs(uArray<u_port<T>*, SIZE>()), outputs(uArray<u_port<T>*, SIZE>())
 		{}
-		
+				
 		void _bind(u_port<T> *data, bool input)
 		{
 			if(input) this->inputs.Add(data);
@@ -182,7 +182,7 @@ namespace uHDL
 		{
 			this->signal = signal;
 			if(this->signal) this->signal->_bind(this, true);
-		}		
+		}
 	};
 	
 	template <typename T = bool>
