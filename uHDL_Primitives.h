@@ -213,7 +213,7 @@ namespace uHDL
 	uMODULE(ClockTicks)
 	{
 		//Inputs
-		u_input<unsigned int> Delay_ticks;
+		u_input<unsigned long> Delay_ticks;
 		
 		//Outputs
 		u_output<bool> ClckOut;
@@ -248,7 +248,7 @@ namespace uHDL
 	uMODULE(ClockMillis)
 	{
 		//Inputs
-		u_input<unsigned int> Delay_ms;
+		u_input<unsigned long> Delay_ms;
 		
 		//Outputs
 		u_output<bool> ClckOut;
@@ -283,7 +283,7 @@ namespace uHDL
 	uMODULE(ClockMicros)
 	{
 		//Inputs
-		u_input<unsigned int> Delay_us;
+		u_input<unsigned long> Delay_us;
 		
 		//Outputs
 		u_output<bool> ClckOut;
