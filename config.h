@@ -10,6 +10,9 @@
 //Set ARDUINO_TB define for simulation
 #define ARDUINO_TB
 
+//Set U_HDL_WIREING define for wireing API
+#define U_HDL_WIREING
+
 #include "uHDL.h"
 #include "uHDL_Primitives.h"
 

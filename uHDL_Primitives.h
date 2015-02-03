@@ -1,6 +1,6 @@
 /*
 	uHDL_Primitives.h
-	uHDL Arduino Ext v0.1 by Slavko Novak [slavko.novak.esen@gmail.com], January 2015
+	uHDL Arduino Ext v0.2 by Slavko Novak [slavko.novak.esen@gmail.com], January 2015
 	License: LGPL
 */
 

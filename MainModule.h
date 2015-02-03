@@ -49,6 +49,14 @@ uMODULE(Count24Main)
 		clckIn.Clck.Write(false);
 		clock.Delay_ms.Write(1000);
 		
+		#ifdef U_HDL_WIREING
+		ClckInT.WireTo(&clckIn.Clck);
+		ClckInHour.WireTo(&multiplexer.ExternalClk);
+		
+		countHour.Output.WireTo(&HourOut);
+		countHour.ClckOut.WireTo(&ClckOut);
+		#endif
+		
 		clock.ClckOut.Connect(&multiplexer_Internal);
 		multiplexer.InternalClk.Connect(&multiplexer_Internal);
 		
@@ -65,6 +73,7 @@ uMODULE(Count24Main)
 		modules.Add(&clock); //Primitive module must be added
 	}
 	
+	#ifndef U_HDL_WIREING
 	//Module method
 	void Count24MainMethod()
 	{
@@ -79,6 +88,7 @@ uMODULE(Count24Main)
 	
 	//Sensitivity and always method
 	uALWAYS(true, Count24MainMethod();)
+	#endif
 };
 //<-- Main module
 

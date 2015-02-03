@@ -1,6 +1,6 @@
 /*
 	uHDL.h
-	uHDL v0.1 by Slavko Novak [slavko.novak.esen@gmail.com], January 2015
+	uHDL v0.2 by Slavko Novak [slavko.novak.esen@gmail.com], January 2015
 	License: LGPL
 */
 
@@ -11,7 +11,7 @@ namespace uHDL
 {	
 	//Macros -->
 	
-	#define uHDL_VER = 0.1
+	#define uHDL_VER = 0.2
 	
 	#define uMODULE(module_name) struct module_name : public uHDL::uModule
 	#define uINIT(module_name) module_name()
@@ -101,10 +101,18 @@ namespace uHDL
 		T data;
 		char data_state;
 		bool data_change;
+		
+		#ifdef U_HDL_WIREING
+		u_port<T> *wireTo;
+		#endif
+		
 	public:
 		u_port() : data(T()), data_state(0), data_change(false)
+				#ifdef U_HDL_WIREING
+					, wireTo((u_port<T> *)0)
+				#endif
 		{}
-			
+		
 		T& Read()
 		{
 			return this->data;
@@ -112,6 +120,13 @@ namespace uHDL
 		
 		virtual void Write(const T& data)
 		{
+			#ifdef U_HDL_WIREING
+			if(this->wireTo)
+			{
+				this->wireTo->Write(data);
+			}
+			#endif
+				
 			if(data != this->data)
 			{
 				this->data_change = true;
@@ -142,6 +157,13 @@ namespace uHDL
 			this->data_state = NONE_EDGE;
 			return ret_val;
 		}
+		
+		#ifdef U_HDL_WIREING
+		void WireTo(u_port<T> *wireTo)
+		{
+			this->wireTo = wireTo;
+		}
+		#endif
 	};
 	
 	template <typename T = bool, unsigned int SIZE = 1>
