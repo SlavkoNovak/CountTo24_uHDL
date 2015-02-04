@@ -50,9 +50,11 @@ uMODULE(Count24Main)
 		clock.Delay_ms.Write(1000);
 		
 		#ifdef U_HDL_WIREING
+		//Wire input
 		ClckInT.WireTo(&clckIn.Clck);
 		ClckInHour.WireTo(&multiplexer.ExternalClk);
 		
+		//Wire output
 		countHour.Output.WireTo(&HourOut);
 		countHour.ClckOut.WireTo(&ClckOut);
 		#endif
