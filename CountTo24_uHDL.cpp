@@ -27,13 +27,16 @@ void setup()
 	//Set output pins
 	pinMode(2, OUTPUT);
 	pinMode(3, OUTPUT);
+
 	pinMode(4, OUTPUT);
 	pinMode(5, OUTPUT);
 	pinMode(6, OUTPUT);
 	pinMode(13, OUTPUT);
-	
+		
 	//Connect signals to module
 	modCount24Main.ClckInHour.Connect(&countHour_clckIn);
+ countHour_clckIn.Write(1);
+ modCount24Main.ClckInT.Write(1);
 }
 
 void loop()
@@ -50,6 +53,7 @@ void loop()
 	//Write outputs
 	digitalWrite(2, uGetBit(modCount24Main.HourOut.Read(), 0));
 	digitalWrite(3, uGetBit(modCount24Main.HourOut.Read(), 1));
+
 	digitalWrite(4, uGetBit(modCount24Main.HourOut.Read(), 2));
 	digitalWrite(5, uGetBit(modCount24Main.HourOut.Read(), 3));
 	digitalWrite(6, uGetBit(modCount24Main.HourOut.Read(), 4));

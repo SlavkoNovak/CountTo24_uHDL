@@ -99,8 +99,8 @@ namespace uHDL
 	{
 	protected:
 		T data;
-		char data_state;
-		bool data_change;
+    signed char data_state;
+ 		bool data_change;
 		
 		#ifdef U_HDL_WIREING
 		u_port<T> *wireTo;
